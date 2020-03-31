@@ -1,0 +1,68 @@
+{
+  "name": "supervue-layer",
+  "version": "0.0.1",
+  "description": "supervue-layer",
+  "private": false,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lib": "vue-cli-service build --target lib --name vue-layer --dest lib packages/layer/index.js",
+    "lint": "vue-cli-service lint"
+  },
+  "main": "./packages/layer/index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "element-ui": "^2.13.0",
+    "core-js": "^3.6.4",
+    "less": "^3.11.1",
+    "less-loader": "^5.0.0",
+    "vue": "^2.6.11",
+    "@vue/cli-plugin-babel": "^4.2.3",
+    "@vue/cli-plugin-eslint": "^4.2.3",
+    "@vue/cli-service": "^4.2.3",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "vue-template-compiler": "^2.6.11",
+    "css-loader": "^3.4.2"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "vue",
+    "layer",
+    "supervue-laye",
+    "supervuelaye",
+    "supervue"
+  ],
+  "author": "don",
+  "license": "",
+  "bugs": {
+    "url": ""
+  }
+}
