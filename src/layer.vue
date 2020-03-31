@@ -66,8 +66,3 @@ export default {
   }
 };
 </script>
-
-<style lang="less">
-@import "./css/iconfont.css";
-@import "./css/index.less";
-</style>

@@ -1,6 +1,4 @@
-<style lang="less" scoped>
-@import "./css/button.less";
-</style>
+
 
 <template lang="html">
 

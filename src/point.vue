@@ -156,26 +156,4 @@ export default {
   },
 }
 </script>
-<style lang="less">
 
-  .vl-notify-point {
-    min-width: 50px;
-    max-width: 400px;
-    display: inline;
-    min-height: 32px;
-    position: fixed;
-    background-color: #303133;
-    color: #fff;
-    padding: 6px 12px;
-    border-radius: 5px;
-    transform: none;
-    padding: 10px !important;
-
-    &:after {
-      content: " ";
-      border: 10px solid #303133;
-      position: absolute;
-      display: inline-block;
-    }
-  }
-</style>

@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import pzbutton from "./components/button/button.vue";
+import pzbutton from "./css/button/button.vue";
 import helper from "./helper/helper.js";
 
 export default {

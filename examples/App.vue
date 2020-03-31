@@ -69,6 +69,7 @@
 <script>
 import formComp from "./form.vue";
 import ceshi from "./ceshi.vue";
+import "../src/css/index.css"
 export default {
   name: "app",
   data() {
