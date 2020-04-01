@@ -427,4 +427,8 @@
   transform: none;
   padding: 10px !important;
 }
+.layer-animal {
+  transition: top 0.5s;
+  transition: left 0.5s;
+}
 /*# sourceMappingURL=index.css.map */

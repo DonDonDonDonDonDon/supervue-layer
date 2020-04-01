@@ -26,6 +26,7 @@
     <br />
     <h2 class="title">tips</h2>
     <el-button type="primary" id="tips" @click="tipsHandle">上</el-button>
+    <el-button type="primary" id="tipsMove" @mousemove.native="tipsHandleMove" @mouseout.native="tipsHandleMoveOut">mouse move</el-button>
     <el-button type="primary" id="tips1" @mouseenter.native="tips1Handle">右</el-button>
     <el-button type="primary" id="tips2" @click="tips2Handle">下</el-button>
     <el-button type="primary" id="tips3" @click="tips3Handle">左-自定义样式</el-button>
@@ -175,10 +176,35 @@ export default {
     },
     tipsHandle(e) {
       console.log(e)
-      this.$layer.point("在很久很久以前", "#tips", {
+      const  point =  [e.clientX,e.clientY];
+      this.$layer.point( point, {
         tips: 0,
         time: 200,
-        point : [e.clientX,e.clientY],
+        id:"tipssss",
+
+        //point : [e.x,e.y],
+        tipsMore:false,
+        content: {
+          content: ceshi,
+          parent: this,
+          //data: { info: this.info }
+          data:{name:"xiaohengBBBBB"},
+        },
+        area: ["900px", "600px"],
+
+      });
+    },
+    tipsHandleMoveOut(e) {
+      this.$layer.close("tipsss22s")
+    },
+    tipsHandleMove(e) {
+      console.log("move le")
+      const  point =  [e.clientX,e.clientY];
+      this.$layer.point( point, {
+        tips: 0,
+        time: 200,
+        id:"tipsss22s",
+
         //point : [e.x,e.y],
         tipsMore:false,
         content: {

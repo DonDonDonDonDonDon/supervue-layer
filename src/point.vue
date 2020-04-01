@@ -48,10 +48,14 @@ export default {
       self.btnyes();
     }, self.options.time * 1000);
 
-    await this.getOffset();
+    await this.getOffset( this.options.point);
     this.getContent()
   },
   methods: {
+    reDraw(options){
+        console.log(options.point)
+      this.getOffset(options.point)
+    },
     'btnyes': function () {
       let o = document.getElementById(this.options.id);
       if (o) {
@@ -86,21 +90,25 @@ export default {
       this.options.layer.instancesVue[this.options.id].iframe = instance.vm;
     },
 
-    async getOffset() {
+    async getOffset(point) {
       await this.sleep(1);
-      let o = document.querySelector(this.options.title); //用title传递that元素
-      const bound = o.getBoundingClientRect();
       let oTips = document.querySelector("#" + this.options.id);
-      let boundTips = oTips.getBoundingClientRect();
 
-      let scrollTop = 0; //this.getScrollTop();
-      let left = o.offsetLeft;
-      let top = o.offsetTop - scrollTop;
+      /*
+            let o = document.querySelector(this.options.title); //用title传递that元素
+            const bound = o.getBoundingClientRect();
+            let oTips = document.querySelector("#" + this.options.id);
+            let boundTips = oTips.getBoundingClientRect();
 
-      left = this.options.point[0]
-      top = this. options.point[1]
+            let scrollTop = 0; //this.getScrollTop();
+            let left = o.offsetLeft;
+            let top = o.offsetTop - scrollTop;
+      */
 
-      let jiantou = 8 + 1;
+      let  left =point[0]
+      let  top = point[1]
+
+/*      let jiantou = 8 + 1;
       while (o.offsetParent) {
         o = o.offsetParent;
         left += o.offsetLeft;
@@ -139,7 +147,7 @@ export default {
       }
       console.log("left"+left)
       console.log("top"+top)
-      console.log(offset)
+      console.log(offset)*/
       oTips.style.left = left+20+ "px";
       oTips.style.top = top+20+ "px";
       // return offset;

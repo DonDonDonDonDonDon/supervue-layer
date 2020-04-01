@@ -1,6 +1,6 @@
 
 <template lang="html">
-    <component :options="this.$data" :is="getActiveName"></component>
+    <component :class="componetClass" :ref="this.$data.id" :options="this.$data" :is="getActiveName"></component>
 </template>
 
 <script>
@@ -13,8 +13,10 @@ import pziframe from "./iframe.vue";
 import pzprompt from "./prompt.vue";
 import point from "./point.vue";
 
+let vm  = null;
 export default {
   data() {
+      vm = this;
     return {
       id: "",
       type: 0, //0（alert默认）1（页面层）2（iframe层）3（loading）4（tips层）,5(msg),6(prompt)
@@ -27,7 +29,8 @@ export default {
       time: 0,
       shade: true,
       yes: "",
-      cancel: ""
+      cancel: "",
+      componetClass:[],
     };
   },
   computed: {
@@ -51,8 +54,20 @@ export default {
       return this.type == 4 ? true : false;
     }
   },
-  mounted() {},
-  methods: {},
+  mounted() {
+      if(this.$data.type==7){
+        this.componetClass = ["layer-animal"]
+      }
+  },
+  methods: {
+      reDrawPoint(options){
+          console.log(" vm.$refs")
+          console.log( vm.$refs)
+          console.log( options)
+          this.$refs[this.$data.id].reDraw(options)
+
+      }
+  },
   watch: {},
   components: {
     pzalert,
