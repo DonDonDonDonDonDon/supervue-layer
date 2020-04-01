@@ -1,6 +1,6 @@
 
 <template lang="html">
-    <component :class="componetClass" :ref="this.$data.id" :options="this.$data" :is="getActiveName"></component>
+    <component style="z-index:999999" :class="componetClass" :ref="this.$data.id" :options="this.$data" :is="getActiveName"></component>
 </template>
 
 <script>
