@@ -71,8 +71,6 @@ export default {
       let left = o.offsetLeft;
       let top = o.offsetTop - scrollTop;
 
-      left = this.options.point[0]
-      top = this. options.point[1]
 
       let jiantou = 8 + 1;
       while (o.offsetParent) {
