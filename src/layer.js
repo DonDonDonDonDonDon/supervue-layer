@@ -304,7 +304,7 @@ let Notification = (function (Vue, globalOption = {
         options.shade = false;
       }
 
-      if (!options.tipsMore && !options.id) {
+      if (!options.tipsMore ) {
         self.closeAll('point');
       }
 
