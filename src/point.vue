@@ -21,8 +21,8 @@ export default {
   data() {
     return {
       timeout: '',
-      id: "vlip" + new Date().getTime()
-
+      id: "vlip" + new Date().getTime(),
+      instance:null,
     }
   },
   props: {
@@ -56,6 +56,9 @@ export default {
         console.log(options.point)
       this.getOffset(options.point)
     },
+    setData(data){
+      this.instance.$options.data = data
+    },
     'btnyes': function () {
       let o = document.getElementById(this.options.id);
       if (o) {
@@ -79,15 +82,15 @@ export default {
       propsData["layerid"] = this.options.id;
       propsData["lydata"] = this.options.content.data;
       this.options.content.data.layerIdACUJSK = this.options.id
-      let instance = new this.options.content.content({
+      this.instance = new this.options.content.content({
         //具体参数信息，请参考vue源码
         parent: this.options.content.parent,
         propsData: propsData,
         data:this.options.content.data
       });
-      instance.vm = instance.$mount();
-      document.getElementById(this.id).appendChild(instance.vm.$el);
-      this.options.layer.instancesVue[this.options.id].iframe = instance.vm;
+      this.instance.vm = this.instance.$mount();
+      document.getElementById(this.id).appendChild(this.instance.vm.$el);
+      this.options.layer.instancesVue[this.options.id].iframe = this.instance.vm;
     },
 
     async getOffset(point) {
@@ -148,8 +151,8 @@ export default {
       console.log("left"+left)
       console.log("top"+top)
       console.log(offset)*/
-      oTips.style.left = left+20+ "px";
-      oTips.style.top = top+20+ "px";
+      oTips.style.left = left+30+ "px";
+      oTips.style.top = top+30+ "px";
       // return offset;
     },
     getScrollTop() {

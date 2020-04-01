@@ -266,8 +266,6 @@ let Notification = (function (Vue, globalOption = {
         //options.id = "nnnnid"
 */
 
-      console.log("options.idoptions.idoptions.idoptions.idoptions.id")
-      console.log(options.id)
       if(options.id){
 /*
         options.id = "point-"+options.id
@@ -276,6 +274,7 @@ let Notification = (function (Vue, globalOption = {
           clearTimeout(self.instancesVue[options.id].timeOut)
           self.instancesVue[options.id].timeOut = setTimeout(function () {
             self.instancesVue[options.id].main.$options.methods.reDrawPoint.call(self.instancesVue[options.id].main,options)
+            self.instancesVue[options.id].main.$options.methods.setPointData.call(self.instancesVue[options.id].main,options.content.content.data)
           },50)
         }else{
           console.log("创建新的了")

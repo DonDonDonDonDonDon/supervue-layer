@@ -66,7 +66,12 @@ export default {
           console.log( options)
           this.$refs[this.$data.id].reDraw(options)
 
-      }
+      },
+      setPointData(data){
+
+          this.$refs[this.$data.id].setData(data)
+
+      },
   },
   watch: {},
   components: {

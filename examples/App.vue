@@ -75,6 +75,7 @@ export default {
   name: "app",
   data() {
     return {
+      i:0,
       tableData: [
         {
           date: "2016-05-02",
@@ -200,6 +201,7 @@ export default {
     tipsHandleMove(e) {
       console.log("move le")
       const  point =  [e.clientX,e.clientY];
+      this.i  = this.i +12;
       this.$layer.point( point, {
         tips: 0,
         time: 200,
@@ -211,7 +213,7 @@ export default {
           content: ceshi,
           parent: this,
           //data: { info: this.info }
-          data:{name:"xiaohengBBBBB"},
+          data:{name:"xiaohengBBBBB"+this.i},
         },
         area: ["900px", "600px"],
 
