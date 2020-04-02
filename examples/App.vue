@@ -26,7 +26,7 @@
     <br />
     <h2 class="title">tips</h2>
     <el-button type="primary" id="tips" @click="tipsHandle">上</el-button>
-    <el-button type="primary" id="tipsMove" @mousemove.native="tipsHandleMove" @mouseout.native="tipsHandleMoveOut">mouse move</el-button>
+    <el-button style="width: 500px;height: 500px" type="primary" id="tipsMove" @mousemove.native="tipsHandleMove" @mouseout.native="tipsHandleMoveOut">mouse move</el-button>
     <el-button type="primary" id="tips1" @mouseenter.native="tips1Handle">右</el-button>
     <el-button type="primary" id="tips2" @click="tips2Handle">下</el-button>
     <el-button type="primary" id="tips3" @click="tips3Handle">左-自定义样式</el-button>
@@ -196,7 +196,7 @@ export default {
       });
     },
     tipsHandleMoveOut(e) {
-      this.$layer.close("tipsss22s")
+   /*   this.$layer.close("tipsss22s")*/
     },
     tipsHandleMove(e) {
       console.log("move le")

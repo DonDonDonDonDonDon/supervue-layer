@@ -275,7 +275,18 @@ let Notification = (function (Vue, globalOption = {
           self.instancesVue[options.id].timeOut = setTimeout(function () {
             self.instancesVue[options.id].main.$options.methods.reDrawPoint.call(self.instancesVue[options.id].main,options)
             self.instancesVue[options.id].main.$options.methods.setPointData.call(self.instancesVue[options.id].main,options.content.content.data)
+              clearInterval(self.instancesVue[options.id].timeInterval)
+              self.instancesVue[options.id].timeInterval =null
           },50)
+            if(!self.instancesVue[options.id].timeInterval){
+                console.log("创建了timeInterval")
+                self.instancesVue[options.id].timeInterval = setInterval(function () {
+                    console.log("执行了timeInterval")
+                    self.instancesVue[options.id].main.$options.methods.reDrawPoint.call(self.instancesVue[options.id].main,options)
+                    self.instancesVue[options.id].main.$options.methods.setPointData.call(self.instancesVue[options.id].main,options.content.content.data)
+                },200)
+            }
+
         }else{
           console.log("创建新的了")
           self.instances[options.id] = {};
