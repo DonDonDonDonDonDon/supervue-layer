@@ -42,10 +42,10 @@ let Notification = (function (Vue, globalOption = {
 
         if (options.id) {
 
-        }else{
-          options.id = `notification_${new Date().getTime()}_${seed++}`;
-          self.instancesVue[options.id] = {};
-          self.instances[options.id] = {};
+        } else {
+            options.id = `notification_${new Date().getTime()}_${seed++}`;
+            self.instancesVue[options.id] = {};
+            self.instances[options.id] = {};
         }
 
 
@@ -66,26 +66,26 @@ let Notification = (function (Vue, globalOption = {
 
         instance.vm = instance.$mount();
 
-      self.instances[options.id].inst = instance;
-      self.instances[options.id].type = options.type;
-/*
-        self.instances[options.id] = {
-            inst: instance,
-            type: options.type
-        };
-*/
+        self.instances[options.id].inst = instance;
+        self.instances[options.id].type = options.type;
+        /*
+                self.instances[options.id] = {
+                    inst: instance,
+                    type: options.type
+                };
+        */
 
 
         document.body.appendChild(instance.vm.$el);
-      self.instancesVue[options.id].mask = ''
-      self.instancesVue[options.id].main = instance.vm
-      self.instancesVue[options.id].iframe = ''
- /*       self.instancesVue[options.id] = {
-            'mask': '',
-            'main': instance.vm,
-            'iframe': '',
-        }
-*/
+        self.instancesVue[options.id].mask = ''
+        self.instancesVue[options.id].main = instance.vm
+        self.instancesVue[options.id].iframe = ''
+        /*       self.instancesVue[options.id] = {
+                   'mask': '',
+                   'main': instance.vm,
+                   'iframe': '',
+               }
+       */
 
         if (options.shade) { //是否显示遮罩，始终添加遮罩
             // let layerMask = document.querySelector('.vl-notify-mask');
@@ -262,79 +262,68 @@ let Notification = (function (Vue, globalOption = {
         options.point = point;
         options.type = 7;
         options.tips = options.tips || [0, {}];
-/*
-        //options.id = "nnnnid"
-*/
+        /*
+                //options.id = "nnnnid"
+        */
 
-      if(options.id){
-/*
-        options.id = "point-"+options.id
-*/
-        if(self.instancesVue[options.id]){
-          clearTimeout(self.instancesVue[options.id].timeOut)
-          self.instancesVue[options.id].timeOut = setTimeout(function () {
-            self.instancesVue[options.id].main.$options.methods.reDrawPoint.call(self.instancesVue[options.id].main,options)
-            self.instancesVue[options.id].main.$options.methods.setPointData.call(self.instancesVue[options.id].main,options.content.content.data)
-              clearInterval(self.instancesVue[options.id].timeInterval)
-              self.instancesVue[options.id].timeInterval =null
-          },50)
-            if(!self.instancesVue[options.id].timeInterval){
-                console.log("创建了timeInterval")
-                self.instancesVue[options.id].timeInterval = setInterval(function () {
-                    console.log("执行了timeInterval")
-                    self.instancesVue[options.id].main.$options.methods.reDrawPoint.call(self.instancesVue[options.id].main,options)
-                    self.instancesVue[options.id].main.$options.methods.setPointData.call(self.instancesVue[options.id].main,options.content.content.data)
-                },200)
+        if (options.id) {
+            if (self.instancesVue[options.id]) {
+                if (self.instancesVue[options.id].canDraw) {
+                    self.instancesVue[options.id].main.$options.methods.reDrawPoint.call(self.instancesVue[options.id].main, options)
+                    self.instancesVue[options.id].main.$options.methods.setPointData.call(self.instancesVue[options.id].main, options.content.content.data)
+                    self.instancesVue[options.id].canDraw = false;
+                }
+                clearTimeout(self.instancesVue[options.id].timeOut)
+                self.instancesVue[options.id].timeOut = setTimeout(function () {
+                    self.instancesVue[options.id].main.$options.methods.reDrawPoint.call(self.instancesVue[options.id].main, options)
+                    self.instancesVue[options.id].main.$options.methods.setPointData.call(self.instancesVue[options.id].main, options.content.content.data)
+                    clearInterval(self.instancesVue[options.id].timeInterval)
+                    self.instancesVue[options.id].timeInterval = null
+                }, 60)
+                if (!self.instancesVue[options.id].timeInterval) {
+                    self.instancesVue[options.id].timeInterval = setInterval(function () {
+                        self.instancesVue[options.id].canDraw = true
+                    }, 60)
+                }
+            } else {
+                self.instances[options.id] = {};
+                self.instancesVue[options.id] = {};
+                self.pointOpen(options)
             }
+        } else {
+            self.pointOpen(options)
+        }
+    }
 
-        }else{
-          console.log("创建新的了")
-          self.instances[options.id] = {};
-          self.instancesVue[options.id] = {};
-          self.pointOpen(options)
+    self.pointOpen = function (options) {
+        if (typeof (options.tips) !== 'object') {
+            options.tips = [options.tips, {}];
+        }
+        if (options.shade == undefined) {
+            options.shade = false;
         }
 
-      }else{
-        self.pointOpen(options)
+        if (!options.tipsMore) {
+            self.closeAll('point');
+        }
 
-      }
-
-
-
-        // option = mergeJson(option, opt);
-
-
-    }
-
-    self.pointOpen = function(options){
-      if (typeof (options.tips) !== 'object') {
-        options.tips = [options.tips, {}];
-      }
-      if (options.shade == undefined) {
-        options.shade = false;
-      }
-
-      if (!options.tipsMore ) {
-        self.closeAll('point');
-      }
-
-      return self.open(options);
+        return self.open(options);
     },
 
-    /**
-     * [description]
-     * @param  {[type]} options [description]
-     * @return {[type]}         [description]
-     */
-    self.iframe = function (opt) {
-        let option = {
-            type: 2,
-            content: opt.content,
-            area: opt.area
-        };
-        option = mergeJson(option, opt);
-        return self.open(option);
-    }
+        /**
+         * [description]
+         * @param  {[type]} options [description]
+         * @return {[type]}         [description]
+         */
+        self.iframe = function (opt) {
+            let option = {
+                type: 2,
+                content: opt.content,
+                area: opt.area
+            };
+            option = mergeJson(option, opt);
+            return self.open(option);
+        }
     /**
      * 获取信息框
      */
@@ -362,7 +351,7 @@ let Notification = (function (Vue, globalOption = {
     self.close = function (id) {
         if (id instanceof Object) {
 
-          id = id.layerIdACUJSK
+            id = id.layerIdACUJSK
         }
         let oElm = document.getElementById(id);
         if (oElm) {

@@ -428,7 +428,9 @@
   padding: 10px !important;
 }
 .layer-animal {
-  transition: all 0.5s;
-  transition-delay: 0.1s;
+  transition: all 0.4s;
+  /*
+    transition-delay: 0.1s;
+    */
 }
 /*# sourceMappingURL=index.css.map */
