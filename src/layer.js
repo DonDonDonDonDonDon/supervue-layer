@@ -270,13 +270,13 @@ let Notification = (function (Vue, globalOption = {
             if (self.instancesVue[options.id]) {
                 if (self.instancesVue[options.id].canDraw) {
                     self.instancesVue[options.id].main.$options.methods.reDrawPoint.call(self.instancesVue[options.id].main, options)
-                    self.instancesVue[options.id].main.$options.methods.setPointData.call(self.instancesVue[options.id].main, options.content.content.data)
+                    self.instancesVue[options.id].main.$options.methods.setPointData.call(self.instancesVue[options.id].main, options.content.data)
                     self.instancesVue[options.id].canDraw = false;
                 }
                 clearTimeout(self.instancesVue[options.id].timeOut)
                 self.instancesVue[options.id].timeOut = setTimeout(function () {
                     self.instancesVue[options.id].main.$options.methods.reDrawPoint.call(self.instancesVue[options.id].main, options)
-                    self.instancesVue[options.id].main.$options.methods.setPointData.call(self.instancesVue[options.id].main, options.content.content.data)
+                    self.instancesVue[options.id].main.$options.methods.setPointData.call(self.instancesVue[options.id].main, options.content.data)
                     clearInterval(self.instancesVue[options.id].timeInterval)
                     self.instancesVue[options.id].timeInterval = null
                 }, 60)
