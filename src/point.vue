@@ -56,7 +56,7 @@ export default {
       this.getOffset(options.point)
     },
     setData(data){
-      this.instance.$props.item=data
+      this.instance.$data.layerData = data
     },
     'btnyes': function () {
       let o = document.getElementById(this.options.id);
@@ -80,13 +80,13 @@ export default {
      // let propsData = helper.deepClone(this.options.content.data) || {};
       let propsData =  {};
       propsData["layerid"] = this.options.id;
-      propsData["item"] = this.options.content.data;
+    //  propsData["item"] = this.options.content.data;
       this.options.content.data.layerIdACUJSK = this.options.id
       this.instance = new this.options.content.content({
         //具体参数信息，请参考vue源码
         parent: this.options.content.parent,
         propsData: propsData,
-       // data:this.options.content.data
+        data:{layerData:this.options.content.data}
       });
       this.instance.vm = this.instance.$mount();
       document.getElementById(this.id).appendChild(this.instance.vm.$el);
