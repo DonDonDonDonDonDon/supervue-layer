@@ -182,6 +182,7 @@ export default {
         tips: 0,
         time: 200,
         id:"tipssss",
+        clickOut:"dafasdfasdfa",
 
         //point : [e.x,e.y],
         tipsMore:false,
@@ -208,7 +209,7 @@ export default {
         id:"tipsss22s",
 
         //point : [e.x,e.y],
-        tipsMore:false,
+        tipsMore:true,
         content: {
           content: ceshi,
           parent: this,
