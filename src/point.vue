@@ -166,8 +166,15 @@
                       console.log("left"+left)
                       console.log("top"+top)
                       console.log(offset)*/
-                oTips.style.left = left + 30 + "px";
-                oTips.style.top = top + 30 + "px";
+                if(!this.options.left){
+                    this.options.left = 0;
+                }
+                if(!this.options.top){
+                    this.options.top = 0;
+                }
+
+                oTips.style.left = left + this.options.left + "px";
+                oTips.style.top = top + this.options.top + "px";
                 // return offset;
             },
             getScrollTop() {
