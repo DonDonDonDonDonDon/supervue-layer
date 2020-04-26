@@ -2,6 +2,7 @@
 
 
     <div
+
             v-click-outside=closeConditional
             class="vl-notify-point"
             :class="[this.options.tips[1],'vl-notify-tips-'+ this.options.tips[0]]"
@@ -44,6 +45,7 @@
             }
         },
         async mounted() {
+
             let self = this;
             if (this.options.time == 0) {
                 this.options.time = 2;

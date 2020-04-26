@@ -2,7 +2,7 @@
 <template>
 <div style="width: 200px;height: 200px;background: white">
   <p @click="close" style="text-align: center;color: black;line-height: 200px">
-    测试{{name}}
+   12121212
   </p>
 </div>
 </template>

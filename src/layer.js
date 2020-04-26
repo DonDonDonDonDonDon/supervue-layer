@@ -61,6 +61,12 @@ let Notification = (function (Vue, globalOption = {
             options.content.content = Vue.extend(options.content.content);
         }
 
+        if(options.type==4){
+            if(typeof options.content.content== "object") {
+                options.content.content = Vue.extend(options.content.content);
+            }
+        }
+
 
         instance.id = options.id;
 
@@ -221,6 +227,7 @@ let Notification = (function (Vue, globalOption = {
      */
     self.tips = function (content, follow, options) {
 
+        console.info("tips","又来了")
 
         //为了能兼容直接传入 元素对象
         let element = follow;
@@ -232,6 +239,7 @@ let Notification = (function (Vue, globalOption = {
 
         options = options || {};
         options.type = 4;
+
         options.content = content || '';
         options.title = element || 'body';
         options.tips = options.tips || [0, {}];
@@ -250,7 +258,7 @@ let Notification = (function (Vue, globalOption = {
 
 
     /**
-     * tips
+     * point
      * @method function
      * @param  {[type]} content [description]
      * @param  {[type]} follow  [description]
@@ -349,11 +357,15 @@ let Notification = (function (Vue, globalOption = {
      * @return {[type]}    [description]
      */
     self.close = function (id) {
+        console.info("close*********","来关闭tips了")
+        console.info("close*********",id)
         if (id instanceof Object) {
 
             id = id.layerIdACUJSK
         }
         let oElm = document.getElementById(id);
+        console.info("close*********",oElm)
+
         if (oElm) {
             document.body.removeChild(oElm);
             delete self.instances[id];
