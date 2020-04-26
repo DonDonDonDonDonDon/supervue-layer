@@ -235,7 +235,9 @@
                     {
                         tips: 1,
                         time: 100,
-                        clickOutDismiss:true
+                        clickOutDismiss:true,
+                        backgroundColor:"white"
+
                     }
                 );
             },

@@ -1,26 +1,22 @@
 <template>
     <div
             class="vl-notify vl-notify-tips"
-            :class="[this.options.tips[1],'vl-notify-tips-'+ this.options.tips[0]]"
-            v-click-outside=closeConditional
+            :class="[this.options.tips[1],'vl-notify-tips-'+ this.options.tips[0],'tips-'+this.contentType]"
+            :style="{background:this.options.backgroundColor}"
+       v-click-outside=closeConditional
 
             :id="options.id">
         <label
+
                 v-if="this.contentType=='string'"
 
                 v-html="options.content"
         >
             <em></em>
         </label>
-        <div
-                v-else
-        >
-            asfasdfasdfasdfadfasdfaasdf
-            <div class="vl-notify-content" :id="id"></div>
 
-
-            <em></em>
-        </div>
+            <div class="" :id="id"  v-else
+            style=""></div>
     </div>
 
 </template>
@@ -81,6 +77,7 @@
             if (this.contentType == "object") {
                 this.getContent()
             }
+            document.styleSheets[0].addRule("#"+this.options.id +'.vl-notify.vl-notify-tips:after', 'border: 10px solid '+this.options.backgroundColor)
         },
         methods: {
             closeConditional(e) {

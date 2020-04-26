@@ -1,7 +1,7 @@
 
 <template>
-<div style="width: 200px;height: 200px;background: white">
-  <p @click="close" style="text-align: center;color: black;line-height: 200px">
+<div style="width: 200px;height: 180px;background: blue;z-index: 999">
+  <p @click="close" style="text-align: center;color: black;margin: 0px;padding: 0px">
    12121212
   </p>
 </div>
