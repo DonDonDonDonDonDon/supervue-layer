@@ -242,6 +242,7 @@
     font-size: 14px;
 }
 .vl-notify.vl-notify-tips {
+    --background-color:#303133;
     min-width: 50px;
     max-width: 400px;
     display: inline;
@@ -256,7 +257,7 @@
 }
 .vl-notify.vl-notify-tips:after {
     content: " ";
-    border: 10px solid #303133;
+    border: 10px solid var(--background-color);
     position: absolute;
     display: inline-block;
 }

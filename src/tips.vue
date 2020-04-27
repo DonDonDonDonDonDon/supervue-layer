@@ -2,7 +2,7 @@
     <div
             class="vl-notify vl-notify-tips"
             :class="[this.options.tips[1],'vl-notify-tips-'+ this.options.tips[0],'tips-'+this.contentType]"
-            :style="{background:this.options.backgroundColor}"
+            :style="{background:this.options.backgroundColor,'--background-color':this.options.backgroundColor}"
        v-click-outside=closeConditional
 
             :id="options.id">
@@ -77,7 +77,7 @@
             if (this.contentType == "object") {
                 this.getContent()
             }
-            document.styleSheets[0].addRule("#"+this.options.id +'.vl-notify.vl-notify-tips:after', 'border: 10px solid '+this.options.backgroundColor)
+            //document.styleSheets[0].addRule("#"+this.options.id +'.vl-notify.vl-notify-tips:after', 'border: 10px solid '+this.options.backgroundColor)
         },
         methods: {
             closeConditional(e) {
