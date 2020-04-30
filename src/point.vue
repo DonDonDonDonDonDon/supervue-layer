@@ -25,7 +25,8 @@
                 timeout: '',
                 id: "vlip" + new Date().getTime(),
                 instance: null,
-              closeConditionalTimeOut:null,
+                closeConditionalTimeOut:null,
+                allowCloseOutside:false,  //is not allow closeOutSide when the layer create just generated
             }
         },
         directives: {
@@ -53,26 +54,32 @@
 
             setTimeout(function () {
                 self.btnyes();
-            }, self.options.time * 1000);
+            }, self.options.time * 200);
+
+            setTimeout(function () {
+                self.allowCloseOutside = true;
+            },  200);
 
             await this.getOffset(this.options.point);
             this.getContent()
         },
         methods: {
-          closeConditional(e){
-            if(this.options.clickOutDismiss){
-              this.closeConditionalTimeOut =  setTimeout(()=>{
-                this.options.layer.close(this.options.id);
-              },200)
-            }
-          },
+            closeConditional(e){
+                if(this.allowCloseOutside){
+                    if(this.options.clickOutDismiss){
+                        this.closeConditionalTimeOut =  setTimeout(()=>{
+                            this.options.layer.close(this.options.id);
+                        },200)
+                    }
+                }
+            },
             reDraw(options) {
                 this.getOffset(options.point)
             },
             setData(data) {
-              if(this.closeConditionalTimeOut!=null){
-                clearTimeout(this.closeConditionalTimeOut)
-              }
+                if(this.closeConditionalTimeOut!=null){
+                    clearTimeout(this.closeConditionalTimeOut)
+                }
                 this.instance.$data.layerData = data
             },
             'btnyes': function () {
