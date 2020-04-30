@@ -203,13 +203,14 @@
                 /*   this.$layer.close("tipsss22s")*/
             },
             tipsHandleMove(e) {
-                console.log("move le")
                 const point = [e.clientX, e.clientY];
                 this.i = this.i + 12;
                 this.$layer.point(point, {
                     tips: 0,
                     time: 200,
                     id: "tipsss22s",
+                    clickOutDismiss:true,
+
 
                     //point : [e.x,e.y],
                     tipsMore: true,
