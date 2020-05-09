@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     close(){
-      console.log("关闭了"+this.layerIdACUJSK)
+      console.log("关闭了"+this.layerData.layerIdACUJSK)
       this.$layer.close(this);
     }
   },

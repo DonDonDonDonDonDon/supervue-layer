@@ -34,6 +34,7 @@
                 id: "vlip" + new Date().getTime(),
                 instance: null,
                 closeConditionalTimeOut: null,
+                allowCloseOutside:false,  //is not allow closeOutSide when the layer create just generated
 
             }
         },
@@ -71,6 +72,11 @@
                 self.btnyes();
             }, self.options.time * 1000);
 
+
+            setTimeout(function () {
+                self.allowCloseOutside = true;
+            },  200);
+
             await this.getOffset();
 
 
@@ -81,10 +87,12 @@
         },
         methods: {
             closeConditional(e) {
-                if (this.options.clickOutDismiss) {
-                    this.closeConditionalTimeOut = setTimeout(() => {
-                        this.options.layer.close(this.options.id);
-                    }, 200)
+                if(this.allowCloseOutside) {
+                    if (this.options.clickOutDismiss) {
+                        this.closeConditionalTimeOut = setTimeout(() => {
+                            this.options.layer.close(this.options.id);
+                        }, 200)
+                    }
                 }
             },
             'btnyes': function () {

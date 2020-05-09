@@ -361,7 +361,8 @@ let Notification = (function (Vue, globalOption = {
         console.info("close*********",id)
         if (id instanceof Object) {
 
-            id = id.layerIdACUJSK
+            /*This id is assigned during generation */
+            id = id.layerData.layerIdACUJSK
         }
         let oElm = document.getElementById(id);
         console.info("close*********",oElm)
