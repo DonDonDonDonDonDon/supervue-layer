@@ -365,7 +365,7 @@ let Notification = (function (Vue, globalOption = {
             id = id.layerData.layerIdACUJSK
         }
         let oElm = document.getElementById(id);
-        console.info("close*********",oElm)
+        console.info("close*********","oElm")
 
         if (oElm) {
             document.body.removeChild(oElm);
